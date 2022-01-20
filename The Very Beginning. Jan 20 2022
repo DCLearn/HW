@@ -1,0 +1,84 @@
+#This is the code to print Hello World. January 19 2022
+print("Hello World")
+print("My")
+#The triple quotes comment out the entire block. 
+# Be sure to add a second triple quote
+"""
+print("Name")
+print("is")
+print("Bond,")
+print("James")
+"""
+print("Bond")
+#Defining a variable in Python
+country="india"
+print(country)
+"""
+variable name must be descriptive and must begin with a letter or underscore
+variable name cannot start with number
+Variable name only contains a-Z, 0-9, and _
+variable name is case sensitive
+value has to be enclosed in double or single quotes
+"""
+name="John"
+age=23
+bodyTemperature=98.4
+print(name)
+print(age)
+print(bodyTemperature)
+"""
+Integers are considered the 'int' type
+FLoating point type (float) are variables with real numbers, fractions and/or decimals
+All numbers with decimals are the float type
+Complex numbers in python are a+bj. a and b are real. j is the sqrt(-1)
+"""
+number=5+3j
+print(number)
+"""
+A string is a sequence of characters
+In python, a string is a sequence of unicode characters
+"""
+firstName="John"
+lastName="Doe"
+print(firstName)
+print(lastName)
+#Storing multiple line string by using triple quotes in the variable#
+quote="""Always code as if the guy who ends up 
+maintaing your code will be a pyschopath
+who knows where you live
+-John Woods"""
+print(quote)
+"""
+Boolean (bool) is a true/false expression
+Ex. someone logs into site. they won't be able to order until they're logged in
+Say logged in is "True" and logged out is "False"
+"False" is the default
+"""
+isLoggedIn=False
+#isLoggedIn is the variable name and False is the Boolean value
+#Boolean values can also be expressed why writing objective truths and falsehoods
+print(5>10)
+print(10>5)
+#type() returns the data type of a variable
+print(type(name))
+print(type(age))
+print(type(bodyTemperature))
+#input() function allows python to read user input from keyboard
+username="John"
+print(username)
+input("Please enter your name")
+#To provide a proper response the value from the user must be stored
+#Accept the username then print it
+username=input("Please enter your name")
+print(username)
+print(type(username))
+#Futher details the User can provide
+username=input("please enter your name")
+age=input("please enter your age")
+print(username)
+print(age)
+#input only accepts values as string. Type conversion is neccessary
+# different type conversions: int(), float(),complex(),bool()
+age=int(input("please enter your age"))
+print(age)
+print(type(age))
