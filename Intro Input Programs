@@ -1,0 +1,42 @@
+#Input() promptes the user for input then returns a string
+x=input()
+print("You entered:"+x)
+name=input("Enter your name:")
+print("Hello,"+name)
+#make input messages easy for the user to understand
+#convert string from input() using int(input())
+age=int(input())
+print(age)
+#multiple inputs
+name=input()
+age=input()
+print(name + " is " + age)
+#Convert miles to km
+miles=int(input("type in miles: "))
+km=miles*1.60934
+print(km)
+#create a tip calculator. Input and output should be a float
+bill=float(input("How much was the bill?: "))
+tip=0.20*bill
+str_tip=str(tip)
+print("Your tip is " + str_tip)
+sum=tip+bill
+str_sum=str(sum)
+print("total:" + str_sum )
+#Write a program to allow only 18 or older to enter. Allowed if they're old enough and Sorry if they're not
+age=int(input("How old are you: "))
+if age >= 18:
+    print("Allowed")
+elif age<18:
+    print("Sorry")
+  #Input age, output age group
+#Child: 0-11, Teen: 12-17, Adult: 18-64, Elder 65+
+age=int(input("What is your age? "))
+if age>=0 and age<= 11:
+    print("Child")
+elif age>=12 and age<=17:
+    print("Teen")
+elif age>=18 and age<=64:
+    print("Adult")
+else:
+    print("Elder")
