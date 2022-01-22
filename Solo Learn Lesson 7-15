@@ -1,0 +1,65 @@
+#Strings
+#A string can be created using two single or double quotation marks " , " ','
+#All number in quotes are string
+print('Hi there')
+# \ Backslash: escape character. Used in string. Used for new lines, tabs, other stuff
+print('Brian\'s mother: He\'s not an angel. He\'s a very naughty boy!')
+print('I\'m learning!')
+print("He said:\"cool!\".")
+#\n creates a new line
+print('One \nTwo \nThree')
+# \t creates a new tab
+print("\t hey \t there")
+# \r is the carriage return symbol. It shifts the cursor to the beginning of the line
+#But it may not work as well in all Python enviornments
+print('\tHeyyo \r there')
+#Okay so apparently, the /r by itself outputs "   there" but with \t in front of the Heyyo, it works as expected
+#Use a double backslash \\ to escape
+print("Newline is \\n")
+#Windows used \r\n for enter key, Linux and Unix use \n
+#Newlines can also be automatically added by using triple quotes
+print("""this
+is a 
+multiline
+text""")
+#triple quotes do not need to be escaped 
+print("""
+I'm learning.
+Python's syntax is easy
+""")
+#Concatenation is for adding strings
+print("Spam"+"eggs")
+print("Python"+"rocks")
+#Numbers will stil be added as string! Don't add it to an integer, which will cause code issues
+print("2" + "2")
+#Multiplying a string by an integer repeats the original string, but multiplying string * string or string*float produces an error
+print("spam"*3)
+print(4*'2')
+# variable values can be reassigned but this should generally be avoided
+x=123.456
+print(x)
+x="This is a string"
+print(x+"!")
+#del statement can remove a variable. Using the deleted variable yields an error unless it is reassigned
+x=42
+# del x. WIthout the hashtag the following line yields an error
+print(3*x)
+#Input() promptes the user for input then returns a string
+x=input()
+print("You entered:"+x)
+name=input("Enter your name:")
+print("Hello,"+name)
+#make input messages easy for the user to understand
+#convert string from input() using int(input())
+age=int(input())
+print(age)
+#convert string from input() using float(input())
+height=float(input())
+print(height)
+#using number in string concatenation by using str()
+age=42
+print("His age is"+str(age))
+#multiple inputs
+name=input()
+age=input()
+print(name + " is " + age)
