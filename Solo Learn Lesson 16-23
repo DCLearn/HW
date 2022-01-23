@@ -1,0 +1,211 @@
+"""
+#In-place operators alllow you write code more concisely. Instead of x=x+3 I can write...
+x=2
+print(x)
+x+=3
+print(x)
+"""
+#In place operators can be used for any numerica operation 
+x=8
+x-=2
+print(x)
+x/=3
+print(x)
+x**=5
+print(x)
+#use in place operators  for string concatenation
+x="spam"
+print(x)
+x+="eggs"
+print(x)
+#Convert miles to km
+miles=int(input("type in miles: "))
+km=miles*1.60934
+print(km)
+#create a tip calculator. Input and output should be a float
+bill=float(input("How much was the bill?: "))
+tip=0.20*bill
+stritip=str(tip)
+print("Your tip is " + stritip)
+sum=tip+bill
+str_sum=str(sum)
+print("total:" + str_sum )
+#Create Booleans comparing values with ==, a comparison or a relational operator. This is different than = for assignment
+my_boolean=True
+print(my_boolean)
+print(2==3)
+print("hello"=="hello")
+#True and False must start with a capital letter
+#Greater than and smaller than < > can be used to compare strings. Letters earlier in the alphabet are considered lesser in value
+print('a' > 'b')
+print("Bob" > "Dave")
+#Both yield False
+#int(True) =1 and int(False)=0, Can be used to convert Booleans into an interger
+x=(7>5)
+print(int(x))
+"""#IF STATEMENTS are used to run code based on a certain condition, like True
+if condition:
+    statements
+#If statements are indented un order to delimit blocks of code. Be sure to include the colon"""
+x=42
+if x>5:
+    print("x is greater than 5")
+#For more complex checks, if statements are nestled, one inside the other. Indenation defines the levelof nesting
+num=12
+if num > 5:
+    print("Bigger than 5")
+    if num <= 47:
+        print("Between 5 and 47")
+"""
+Because each if statement is Nestled in the preceding statement
+once the program reaches an "if" statement that is False 
+it does not continue to any of the nestled "if" statements whether or not they are true
+"""
+num=7
+if num>3:
+    print("3")
+    if num < 5:
+        print("5")
+        if num==7:
+            print("7")
+#Non-Nestled if statements are show below
+num=4
+if num>2:
+    print("TRUE")
+if num>2:
+    print("False")
+if num==4:
+    print("TRUe Again")
+#Write a program that checks if the water is boiling. ANy value equal to or over 100 degree celsius is "Boiling"
+num=int(input("what is the temperature? (C): "))
+if num >=100:
+    print("Boiling")
+#Else statements run when the if statement is false. They have similar layout as if statments.
+# Rememeber the colon. if it doesnt auto-indent the colon is missing
+x=4
+if x==5:
+    print("Yes")
+else:
+    print("No")
+#Every if condition block can only have one else statement. For multiple checks a chain of is and else statements is rquired
+num=3
+if num==1:
+    print("One")
+else:
+    if num ==2:
+        print("Two")
+    else:
+        if num==3:
+            print("Three")
+        else:
+            print("Something else")
+#indentation tells which if/else statement the code block belongs to
+"""
+Too many if/else statements make code long and hard to read.
+elif (short for else/if) statement chains if/else statments.
+The last segment of code rewritten with elif:
+"""
+num=3
+if num==1:
+    print("One")
+elif num==2:
+    print("Two")
+elif num ==3:
+    print("Three")
+else:
+     print("Something else")
+#A series of if elif statements can have final else block for if all the preceding statements are False
+num=8
+if num==1:
+    print("One")
+elif num==2:
+    print("two")
+elif num==3:
+    print("Three")
+else:
+    print("Something else")
+#Write a program to allow only 18 or older to enter. Allowed if they're old enough and Sorry if they're not
+age=int(input("How old are you: "))
+if age >= 18:
+    print("Allowed")
+elif age<18:
+    print("Sorry")
+#Combine mulitple conditions using and/or operators
+#and requires both conditions to be True
+print(1==1 and 2==2)
+print(1==1 and 2==3)
+print(1!=1 and 2==3)
+print(2<1 and 3>6)
+#or requires only one condition to be True
+print(1==1 or 2==2)
+print(1==1 or 2==3)
+print(1!=1 or 2==2)
+print(2<1 or 3>6)
+#compare variable to form conditions
+age=24
+limit=18
+height=191
+if(age>limit and height>180):
+    print("yes")
+#the "not" operator inverts one argument. So not True becomes False and not False becomes True
+print(not 1==1)
+print(not 1>7)
+#multiple conditional statements can be chained in an if statement with Boolean operators
+country = "US"
+age = 42
+if (country == "US" or country=="GB") and (age>0 and age<100):
+    print("Cool")
+#Input age, output age group
+#Child: 0-11, Teen: 12-17, Adult: 18-64, Elder 65+
+age=int(input("What is your age? "))
+if age>=0 and age<= 11:
+    print("Child")
+elif age>=12 and age<=17:
+    print("Teen")
+elif age>=18 and age<=64:
+    print("Adult")
+else:
+    print("Elder")
+#Loops repeat blocks of code. Ex. processing multiple user inputs, anytime a user inputs something, the same code needs to be used
+#while loop contains a variable that counts 1-5 then terminates
+i=1
+while i<=5:
+    print(i)
+    i=i+1
+print("Finished!")
+#while loops should auto-indent. if they dont, check for the colon
+x=0
+while x<10:
+    print(x)
+    x += 1
+#Iteration: the code in the body of the while loop is executed repeastedly while the conditionis True
+#Add the  current number to the sum variable during each iteration
+sum=0
+x=10
+while x>0:
+    sum+=x
+    x-=1
+print(sum)
+#Long form: 10+9+8+7+6+5+4+3+2+1
+i=3
+#if statements can be used in loops. ex. games looping through player actions
+x=1
+while x<10:
+    if x%2 ==0:
+        print(str(x)+" is even")
+    else:
+        print(str(x)+ " is odd")
+    x+=1
+#if the condtion of the while loop remains True, it will create an infinite loop.
+#can also use "while True". Can crash some computers
+"""
+x=8
+while x>3:
+    print(x)
+    """
+#change a program that output integers 0-10 to only output even numbers
+x=0
+while x<=10:
+    if x%2 == 0:
+        print(x)
+    x+=1
