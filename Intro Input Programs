@@ -65,3 +65,8 @@ print(total)
 #write  aprogram that rakes an input string and outputs the 3rd character of that string
 wawa=input("type a word ")
 print(wawa[2])
+#Given a list of numbers, output "bingo" if it contains the input number. Donot output if thenmber is not found
+x=[43,8,7,1,0,124,8897,555,3,67,99]
+num=int(input("Type in a number: "))
+if num in x:
+    print("bingo")
