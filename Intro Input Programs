@@ -40,3 +40,28 @@ elif age>=18 and age<=64:
     print("Adult")
 else:
     print("Elder")
+#Make a BMI calculator program. Underweight is less than 18.5. Normal is 18.5-25. obesity is 30 or more
+height=float(input("How tall are you (m)?" ))
+weight=float(input("How much do you weigh?"))
+bmi=weight/height**2
+if bmi>=30:
+    print("Obesity")
+elif bmi>=18.5 and bmi<=25:
+    print("Normal")
+elif bmi<18.5:
+    print("Underweight")
+    # Take the ages of 5 patrons as input and output the total price of tickets
+ticket = 100
+total = 0
+passengers = 1
+while passengers <= 5:
+   age = int(input()) # in the loop
+   passengers += 1 # always increment
+   if age < 3:
+       continue
+   else:
+       total += ticket
+print(total)
+#write  aprogram that rakes an input string and outputs the 3rd character of that string
+wawa=input("type a word ")
+print(wawa[2])
