@@ -70,3 +70,9 @@ x=[43,8,7,1,0,124,8897,555,3,67,99]
 num=int(input("Type in a number: "))
 if num in x:
     print("bingo")
+#Given a  list of nubers, calculate their sum using a "for" loop
+x=[42,8,7,1,0,124,8897,555,3,67,99]
+sum=0
+for total in x:
+    sum += total
+print(sum)
