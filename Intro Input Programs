@@ -80,3 +80,16 @@ print(sum)
 word=list(input("Write a word"))
 hello=word[::-1]
 print(hello[0])
+#Take a number N 
+# as input and output the sum of all numbers from 1 to N (including N).
+N=int(input("insert a number"))
+lit=list(range(N+1))
+var=0
+while N > 0:
+    L=lit[N]
+    var += L
+    N -=1
+    if L== 0:
+        break
+#print(lit)
+print(var)
