@@ -76,3 +76,7 @@ sum=0
 for total in x:
     sum += total
 print(sum)
+#Write a program that takes a string as input and outputs the last character of that string.
+word=list(input("Write a word"))
+hello=word[::-1]
+print(hello[0])
