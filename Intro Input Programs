@@ -93,3 +93,7 @@ while N > 0:
         break
 #print(lit) this was basically to ensure the list included all numbers in the range
 print(var)
+#Replace all of the # characters in the given input with spaces and output the result.
+msg=input("my#friend\'s#message:")
+x=msg.replace("#"," ")
+print(x)
