@@ -91,5 +91,5 @@ while N > 0:
     N -=1
     if L== 0:
         break
-#print(lit)
+#print(lit) this was basically to ensure the list included all numbers in the range
 print(var)
