@@ -1,0 +1,240 @@
+#use a break statement to end a while loop prematurely
+#look how we break this infinite loop
+from itertools import tee
+
+
+i=0
+while True:
+    print(i)
+    i=i+1
+    if i >= 5:
+        print("Breaking")
+        break
+    
+print("Finished")
+"""infinite while loops can be used to continuously take user input then break when the user says stop
+using break statement outside of the loop causes an error"""
+"""continue is a statement used to jump back to the top of the loop. it stops the current iteration and continues with the next one
+#it does not stop an infinite loop"""
+i=0
+while i<5:
+    i +=1
+    if i==3:
+        print("Skipping 3")
+        continue
+    print(i)
+#one example is a resturaunt where kids under 3 eat free. The program can use continue to skip over kids younger than 3
+# Take the ages of 5 patrons as input and output the total price of tickets
+"""#age = int(input())
+ticket = 100
+total = 0
+passengers = 1
+while passengers <= 5:
+   age = int(input()) # in the loop
+   passengers += 1 # always increment
+   if age < 3:
+       continue
+   else:
+       total += ticket
+   # passengers += 1
+print(total)"""
+"""
+patron=0
+cost=0
+age=int(input("how old r u"))
+while patron < 4:
+        patron+=1
+        age=int(input("how old r u"))
+        #cost +=100
+        if age<3:
+         continue
+        else:
+         #patron +=1
+         cost +=100
+         #age=int(input("how old r u"))
+print(cost)
+"""
+"""
+total = 0
+passenger=0
+while(passenger<5):
+    passenger +=1
+    age=int(input())
+    if(age<3):
+        continue
+    else:
+        total+=100
+print(total)
+"""
+#Honestly the whole preceding section was a mess. Had to cheat code it and it made no sense. Might have to revist it
+#Make a BMI calculator program. Underweight is less than 18.5. Normal is 18.5-25. obesity is 30 or more
+height=float(input("How tall are you (m)?" ))
+weight=float(input("How much do you weigh?"))
+bmi=weight/height**2
+if bmi>=30:
+    print("Obesity")
+elif bmi>=18.5 and bmi<=25:
+    print("Normal")
+elif bmi<18.5:
+    print("Underweight")
+#Lists store items and are created using square brackets with commas
+words=["Hello","world","!"]
+print(words[0])
+print(words[1])
+print(words[2])
+""" first item in the list is a 0 not a 1
+#lists can hold different data types like strings and numbers
+Nested lists can represent 2D grids like matrices"""
+m=[
+    [1,2,3],
+    [4,5,6]
+]
+#to print an element type the height and row
+print(m[1][2])
+#indexing a string creates a list of each character in the string
+str="Hello World"
+print(str[6])
+#Space bar " "is also a character and has an inndex
+#write  aprogram that rakes an input string and outputs the 3rd character of that string
+wawa=input("type a word ")
+print(wawa[2])
+#The item at a certain index in a list can be reassigned.
+nums=[5,8,2]
+nums[1]=42
+print(nums)
+#Output: [5,42,2]
+#Lists can be added like strings 
+nums=[1,2,3]
+print(nums+[4,5,6])
+#a list can multiplied by an integer to repeat the list a number of times
+#lists are like strings with changeable characters
+nums=[1,2,3]
+print(nums*3)
+#to check if an item is in a list use "in" operator. It will yield True or False
+words=["spam","egg","spam","sausage"]
+print("spam" in words)
+print("egg" in words)
+print("tomato" in words)
+#The "in" operator also  determines whether or not a string is a substring of another string
+x="hello world"
+if "world" in x:
+    print("Yes")
+#Use the "not" operator to check if an item is not in a list
+nums=[1,2,3]
+print(not 4 in nums)
+print(4 not in nums)
+print(not 3 in nums)
+print(3 not in nums)
+#Given a list of numbers, output "bingo" if it contains the input number. Donot output if thenmber is not found
+x=[43,8,7,1,0,124,8897,555,3,67,99]
+num=int(input("Type in a number: "))
+if num in x:
+    print("bingo")
+#"for" loop iterates over a given sequence, such as lists or strings.
+#Ex. code to output each item in the list and add an exclamation mark
+words=["hello","world", "spam","eggs"]
+for word in words:
+    print(word+ "!")
+#the "for" loop defines a variable that takes the value of the current item in the list on each iteration
+# in the preceding code, "word" represent the item in the list used in each iteration of the loop
+#so word=hello, then word = world, then word = spam...etc
+# a "for" loop can be used to iterate over strings
+str="testing for loops"
+count=0
+for x in str:
+    if(x=='t'):
+        count +=1
+print(count)
+"""the "count" variable iterates over the string and counts instances of "t"
+in each iteration x is a letter in a string 
+continue and break statements can be used here as well"""
+text="some text"
+for x in text:
+    if x=='e':
+        break
+    print(x)
+"""\"for\" loop is used when the number of iterations is fixed, like the fixed items in  a shopping list
+"while" loops is used when the number of iterations in unknown and depends on calculations and conditions in the code block
+Ex. ending a loop when the user enters a specific input in a calcuator program
+\"for\" is used more often because it has a shorter syntax"""
+#Given a  list of nubers, calculate their sum using a "for" loop
+x=[42,8,7,1,0,124,8897,555,3,67,99]
+sum=0
+for total in x:
+    sum += total
+print(sum)
+#"Range" create a number sequence. Starts at 0, increments by 1 and stops before the specified nu,ber
+numbers=range(10)
+print(numbers)
+#outputs "range(0,10)"
+#use the "list()" function to output range as a list
+numbers=list(range(10))
+print(numbers)
+#if range is called with one argument s, it produces an object with values from 0 to that argument
+# if its called with two arguments, it produces values from the first to the secondbut excludes the 2nd argument
+numbers= list(range(3,8))
+print(numbers)
+#Write a program that takes two integers as input and outputs the range of numbers between the two inputs as a list.
+#The output sequence should start with the first input number and end with the second input number, without including it.
+a=int(input("Insert year"))
+b=int(input("Insert second year"))
+years= list(range(a,b))
+print(years)
+#Use the step tool to go through a range at a specific interval
+numbers=list(range(5,20,2))
+print(numbers)
+#Go back through the range using a negative number 
+x=list(range(7,3,-1))
+print(x)
+#ranges can be used in for loops without converting to lists
+for u in range(5):
+    print("hello!")
+#"list slices" return a part of a list using two colon-separates indices.
+#this returns a new list containing all the values between the indices
+squares=[0,1,4,9,16,25,36,49,64,81]
+print(squares[2:6])
+print(squares[3:8])
+print(squares[0:1])
+#the first index is included in the result but the second is not
+#if the first number in a slide is omitted, it is taken to be the start of the list
+squares=[0,1,4,9,16,25,36,49,64,81]
+print(squares[:7])
+#if the second number is omitted, it is taken to be the end and includes the 
+#final element in the list
+squares=[0,1,4,9,16,25,36,49,64,81]
+print(squares[7:])
+#List slices can also include steps
+squares=[0,1,4,9,16,25,36,49,64,81]
+print(squares[::2])
+print(squares[2:8:3])
+#negative values are also used in list slicing and normal list indexing
+#when a neg value is used for the first and second value in a slice they count from the end of the list
+squares=[0,1,4,9,16,25,36,49,64,81]
+print(squares[1:-1])
+#if a negative value is used for the step, the slice will be done backwards
+#[::-1] is used to reverse a list
+nums=[5,42,7,1,0]
+res=nums[::-1]
+print(res)
+#Write a program that takes a string as input and outputs the last character of that string.
+word=list(input("Write a word"))
+hello=word[::-1]
+print(hello[0])
+#What's the output of this code?
+list = [1, 1, 2, 3, 5, 8, 13]
+print(list[list[4]])
+#The output is 8. Think of this like order of operations. [list[4]] is 5
+#then list[5] is 8
+#Take a number N 
+# as input and output the sum of all numbers from 1 to N (including N).
+N=int(input("insert a number"))
+lit=list(range(N+1))
+var=0
+while N > 0:
+    L=lit[N]
+    var += L
+    N -=1
+    if L== 0:
+        break
+#print(lit)
+print(var)
