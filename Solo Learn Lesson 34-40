@@ -1,0 +1,194 @@
+"""a function is a group of related statements that perform a specific task
+functions help break a program into smaller chunks and make is more organized and manageable
+It avoids repition and makes the code reusable
+A function has a name and can have arguments."""
+#in print("Hello"),  print is the function name and "Hello" is the argument
+"""Python has built-in functions as were previously discussed.
+Functions can have multiple arguments. An example is the range function."""
+#A function is "called" by using its name, then parentheses 
+#the len() function returns the number of items in a list
+nums=[1,3,5,2,4]
+print(len(nums))
+#len does not start with 0, so 5 is printed because there are 5 items
+#len also returns strings character count, including space
+str="some text"
+x=len(str)
+print(x)
+#append() adds an item to the end of the list
+nums=[1,2,3]
+nums.append(4)
+print(nums)
+#insert() inserts a new item at the given postion in the list.
+# the first argument is the position index (after inserting) while the second parameter is the intem to insert
+words=["Python","fun"]
+words.insert(1,"is")
+print(words)
+#index() show the first occurence of a list item and its index/position
+#it will return an error if the item is not in the list
+letters=['p','q','r','s','p','u']
+print(letters.index('r'))
+print(letters.index('p'))
+print(letters.index('q'))
+#max(list): returns the maximum value. min(list) returns the minimum value
+x=[1,8,42,3]
+print(min(x))
+print(max(x))
+#list.count(item) returns a count of how many times that item occurs in a list
+x=[2,4,6,2,7,2,9]
+print(x.count(2))
+#list.remove(item) removes an item from a list
+x.remove(4)
+print(x)
+#list.reverse() reverses items in a list. This is a shorter version of [::-1]
+x.reverse()
+print(x)
+"""Write a program to take an input, 
+add it to the end of the queue, 
+and output the resulting list."""
+queue = ['John', 'Amy', 'Bob', 'Adam']
+name=input("add your name to the queue")
+queue.append(name)
+print(queue)
+#Replace all of the # characters in the given input with spaces and output the result.
+msg=input("my#friend\'s#message:")
+x=msg.replace("#"," ")
+print(x)
+#strings have a format() to embed values in it using placeholders
+#Each argument of the format function is place in the string in the positon
+#in the curly braces {}
+nums=[4,5,6]
+msg="Numbers:{0}{1}{2}".format(nums[0],nums[1],nums[2])
+print(msg)
+#A better example
+print("{0}{1}{0}".format("abra","cad"))
+#outputs abracadabra.  A clearer example of what the format function does
+#Placeholders can be named instead of using index numbers
+a="{x},{y}".format(x=5,y=12)
+print(a)
+#outputs 5,12
+#join() joins a list of string using another string as a separator. Product is a string
+x=",".join(["spam","eggs","ham"])
+print(x)
+#prints "spam, egg, ham"
+#split() turns a string a certain separator into a list
+str="some text goes here"
+x=str.split(' ')
+print(x)
+#replace() replaces one substring with another.
+#The first is the substring to be replaced the second is the replacement
+x="Hello ME"
+print(x.replace("ME","world"))
+#lower() and upper() change a case of a string from uppercase to lowercase
+print("This is a sentence.".upper())
+print("AN ALL CAPS SENTENCE".lower())
+#Make functions using "def" statement.
+#This function takes no arguments and print spam three times
+def my_func():
+    print("spam")
+    print("spam")
+    print("spam")
+#do not forget the colon  
+#after defining a fucntion, it can be called.
+def hello():
+    print("Hello world!")
+hello()
+hello()
+#calling a function before its definition will cause an error
+#redesign the given function so that it will take the name of the user as input and output the welcome message with it.
+"""def welcome():
+   print("Welcome, user")
+
+welcome()"""
+def welcome():
+    n=input("type your name")
+    print("Welcome, " + n)
+
+welcome()
+#functions can take arguments 
+def exclamation(word):
+    print(word + "!")
+exclamation("spam")
+
+def greet(name, msg):
+    """This function greets to
+    the person with the provided message"""
+    print("Hello", name + ', ' + msg)
+
+greet("Monica", "Good morning!")
+#this will output Hello Monica, Good morning!
+#the argument is defined inside the parentheses
+"""calling the function with differrent arguments allows us to resuse
+function logic for different values and functions can have multiple arguments"""
+def print_sum_twice(x,y):
+    print(x+y)
+    print(x+y)
+print_sum_twice(5,8)
+#if statements and loops can be used inside functions
+#The given program defines a function printBill(), which takes one string argument and outputs formatted text.
+# You need to take the user input and call the function by passing the input as its argument.
+def printBill(text):
+    print("===")
+    print(text)
+    print("====")
+
+printBill(input())
+#int and str return a value instead of outputting it
+#to use the reurned value in later code, assign it to a variable
+#use the "return" statement
+def sum(x,y):
+    return x+y
+#no output
+res=sum(42,7)
+print(res)
+#return is useful when print() the result is unneccessary but the result is still
+#needed in the code. Like an if statement
+def max(x,y):
+    if x>=y:
+        return x
+    else:
+        return y
+if (max(6,4) > 10):
+    print("Yes")
+else:
+    print("Nope")
+#once the value is returned from a function and code placed after the return statement won't be executed
+def add_numbers(x,y):
+    total=x+y
+    return total
+    print("this wont be printed")
+print(add_numbers(4,5))
+#return multiple values using a list
+def double(a,b):
+    return[a*2,b*2]
+x=double(6,9)
+print(x)
+#Your program needs to take the width and length as input and output the area of the rectangle.
+w=int(input("width"))
+h=int(input("height"))
+def area(x,y):
+    print(x*y)
+area(w,h)
+# hashtags are called octothorpes in python
+""" the triple quotes in python are called docstrings/documentation strings"""
+def func(x):
+    res=0
+    for i in range(x):
+      res+=i 
+    return res
+
+print(func(3))
+"""The given code takes a text and a word as input and passes them to a function called search().
+The search() function should return "Word found" if the word is present in the text, or "Word not found", if it’s not.
+"""
+text=input("text")
+word=input("word")
+def search(x,y):
+    #x=x.split(' ')
+   # y=list(y)
+    if x.count(y)>=1:
+        return("Word found")
+    else:
+     return("Word not found")
+
+
+print(search(text,word))
