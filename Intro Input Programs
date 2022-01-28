@@ -97,3 +97,80 @@ print(var)
 msg=input("my#friend\'s#message:")
 x=msg.replace("#"," ")
 print(x)
+#Sololearn Code practice
+"""Convert AM/PM time to 24 hour clock
+input 1:15 PM
+output 13:15"""
+twelve_clock=input("Write the time")
+twentyfour_clock= twelve_clock.split(" ") #Split the the gap between the time and the AM/PM
+if twentyfour_clock[1] == "PM" : #if PM is used
+    strong=str(twentyfour_clock[0]) #convert X:YZ to string
+    b=strong.split(":") #split at the :
+    #b=twentyfour_clock[0,z]
+    #z=twentyfour_clock.index(":")
+    #print(b)
+    c= int(b[0]) + 12 #convert to an integer add 12 to the first item in the list
+    print(str(c)+":"+str(b[1])) 
+else:
+    twentyfour_clock.remove("AM")
+    #twentyfour_clock.remove("'")
+    print(str(twentyfour_clock[0]))
+    
+"""
+In a string of arandom letters create a program to determine whether any letter is repeated in the string
+input: random string of letters
+output: deja vu or unique
+"""
+msg=list(input("random letters")) #convert the string to a list
+x=0
+f=len(msg)-1 #the length of the random string of letters
+for i in msg: #each character in the string
+    x+=msg.count(i) #add the count of the character in the list to x
+if len(msg) < x: #if the length of the msg is smaller than x, print deja vu
+    #i==[f]
+    print("Deja Vu")
+else: #otherwise print Unique
+    print("Unique")
+"""GIven the number of sublings you are giving popsicles to, determine if you can give an even ammount
+Input 3 9
+Output give away/eat them yourself"""
+a=input("two integers")
+b=a.split(" ")
+if int(b[1])%int(b[0])==0:
+    print("give away")
+else:
+    print("eat them yourself")
+
+"""
+Create  aprogram that parses through a link, extracts and outputs the Youtube videeo ID
+Input: full youtube link youtube.com/watch?v=akhkhaskhsjha or youtu.be/jasjshja
+Output: akhkhaskhsjha or jasjshja
+"""
+a=input("insert youtube link")
+if '=' in a:
+    b=(a.index('='))+1
+    print(a[b:])
+else:
+    b=(a.index("/"))+1
+    print(a[b:])
+"""Write a program that takes a string as input and evalutes it as a valid password
+a valid password has 2 numbers, special characters and a length of at least 7 characters"""
+a=input("Password")
+b=["0","1","2","3","4","5","6","7","8","9"]
+c=['!','@','#','$','%',"&","*"]
+d=0
+e=0
+for i in a:
+    if i in b:
+        d+=1
+    else:
+        continue
+for j in a:
+    if j in c:
+        e+=1
+    else:
+        continue
+if len(a)>=7 and d>=2 and e>=2:
+    print("Strong")
+else:
+    print("Weak")
