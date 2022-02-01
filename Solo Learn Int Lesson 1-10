@@ -1,0 +1,207 @@
+#SoloLearn Int
+#Python has built-in collection types to store multiple values
+#lists are one example, they store indexed values
+#Dictionaries are a collection type and arbitrary keys can be mapped to values
+#Dictionaries can be indexed like lists, with [] with keys
+from argparse import ONE_OR_MORE
+
+
+ages = {
+    "Dave":24,
+    "Mary":42,
+    "John":58
+}
+print(ages["Dave"])
+print(ages["Mary"])
+
+#Each element in a dictionary is represented by a key:value pair
+#lists are accesed with indes, dictionaries are accessed with keys
+"""Only immutable objects can be used as keys to dictionaries
+lists and dictionaries are mutable
+strings, integers, booleans and other immutables can be dictionary keys"""
+#use "in" and "not in" to determine whether a key is in a dictionary 
+
+nums = {
+    1:"one",
+    2:"two",
+    3:"three",
+}
+print(1 in nums)
+print("three" in nums)
+print(4 not in nums)
+#outputs True/False
+#Use "get" which is like indexing but if the key isnt in the dictionary
+#it will return another specified value instead
+pairs={
+    1:"apple",
+    "orange":[2,3,4],
+    True:False,
+    12: "True",
+}
+print(pairs.get("orange"))
+print(pairs.get(7,42))
+print(pairs.get(12345,"not found"))
+#use len() function to determine how many items a dictionary has
+"""
+Complete the porgram to take the country name as input and output its corresponding
+economic freedom rank. if the provided country name is not present in the data, output "Not found"
+"""
+data={
+    'Singapore':1,
+    'Ireland':6,
+    'United Kingdom':7,
+    'Germany':27,
+    'Armenia':34,
+    'United States': 17,
+    'Canada':9,
+    'Italy':74
+    }
+
+a=input("Insert country name")
+"""if a in data:
+    print(data[a])
+else:
+    print("Not Found")"""
+if a in data:
+    print(data.get(a))
+else:
+    print(data.get(12345,"Not found"))
+
+#Tuples are similar to lists but they are immutable and created using parentheses
+#their values can be accessed with index, just like lists
+
+words=("spam","eggs","sausages")
+print(words[0])
+#trying to reassign a value in a tuple causes an error
+#ex: words[1] = cheese
+#tuples can be formed without parenthenes by separating the values with commas
+my_tuple="one","two","three" #do not forget commas
+print(my_tuple[0])
+#tuples are faster than lists and occupy less memory but cannot be changed
+#this can be confirmed using timeit.timeit() and sys.getsizeof(), respectively
+"""Contacts are stored in a tuple. String as input and output the age of the contact
+Input: John
+output: John is 31"""
+contacts=[
+    ('James',42),
+    ('Amy',24),
+    ('John',31),
+    ('Amanda',63),
+    ('Bob',18)
+]
+#print((contacts[0])[0])
+a=input("Insert contact name")
+s=-1
+for i in contacts:
+    s+=1
+    if a==((contacts[s])[0]):
+        b=((contacts[s])[0])
+        c=((contacts[s])[1])
+        print(b + " is " + str(c))
+        break
+    elif s==4 and a !=((contacts[s])[0]):
+        print("Not found")
+#Tuple unpacking assigns item in a collection to a variable
+#and can swap variables by doing: a,b =b,a
+numbers=(1,2,3)
+a,b,c = numbers
+print(a)
+print(b)
+print(c)
+"""We can only unpack the value if the number of variable and the number
+of values are the same (unless it contains *var)
+a variable that is prefaced with an astericks takes all the values from 
+the collections that are left over from the other variables"""
+a,b,*c,d=[1,2,3,4,5,6,7,8,9]
+print(a)
+print(b)
+print(c)
+print(d)
+#c is assigned the values 3 to 8
+"""Make a function called calc() that will take the side length of a square 
+as its argument and return the periment and area, using a tuple
+Input: 3
+Output Perimeter: 12 Area: 9"""
+def calc(x):
+    return (4*x, x**2)
+side=int(input("length of square side"))
+p,a=calc(side)
+print("Perimeter: "+ str(p))
+print("Area: "+str(a))
+""" Sets are similar to lists or distionaries, They are created using {} 
+and unordered, so they cannot  be indexed. This makes the "in" operator faster
+to use on the set. Sets cannot contain duplicate elements
+"""
+num_set={1,2,3,4,5}
+print(3 in num_set)
+#Output a boolean true/false
+#Set are used when values must be unique or the order doesn't matter
+#use set() to convert a list to a set and remove duplicates
+"""the add() can add new items to a set and remove() can delete a specific element"""
+nums={1,2,1,3,1,4,5,6}
+print(nums) #duplicates are removed
+nums.add(-7)
+nums.remove(3)
+print(nums)
+#len() can be used to return the number of elements in a set
+"""Mathematical operations can combine sets. The "union"
+operator |combines two sets and forms a new one
+The intersection operator "&" retrieves items that are in both
+the difference operator "-" gets items in the first set but not the second
+the symmetric difference operator ^ gets items that in either set but not both """
+first={1,2,3,4,5,6}
+second={4,5,6,7,8,9}
+print(first | second)
+print(first&second)
+print(first-second)
+print(second-first)
+print(first^second)
+"""List comprehensions are a way to create lists whose contents obey
+a rule. They are inspired by set builder notation in mathematics"""
+cubes=[i**3 for i in range(5)]
+print(cubes)
+#outputs 0**3, 1**3, so on so forth
+"""a  list comprehension can also contain an if statement
+and enforce a conition on values in the list"""
+evens=[i**2 for i in range(10) if i**2 % 2 ==0]
+print(evens)
+#outputs even squares of numbers from 0-9
+"""GIven a  word as input, output a list containing only the letters
+of the word that arent vowels a,e,i,u,o
+Input: Awesome
+Output: ['w','s','m']"""
+a=input("Write a word ")
+vowels=("a","e","i","o","u","A","E","I","O","U")
+no_vowels= [i for i in a if i not in vowels]
+print(no_vowels)
+"""USe a dictionary when there needs to be a logical association between a key:value pair
+or a fast lookup for data or when data is constantly modified
+
+Use a list fordata that does not need random access. Lists are gfor simple, iterable 
+collevctions that are modified frequently. 
+
+Use a set if the elemenets must be unique
+
+use tuples when the data cannot/should not change
+
+Sometimes tuples are used asa  key for a dictionary since they are immutable"""
+#A frozenset() makes an iterableobject immutabe, so elements from the frozenset
+#cannot be added or removed once it is created. The order of the elements may or may not change
+#frozensets are sometimes used as a key in dictionary or as elements in other sets
+"""Given a string, output how many times each letter apears in the string
+store the data in a dictionary where the letters are the keys and the counts are th evalues
+input: hello
+output: {'h':1,'e':1,'l':2,'o':1}"""
+a=input()
+dic={
+
+}
+for i in a:
+    b=0
+    b+= a.count(i)
+    c=str(i)
+    dic.update({c:b})
+    continue
+
+print(dic)
+
