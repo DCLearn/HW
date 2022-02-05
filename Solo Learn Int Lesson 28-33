@@ -1,0 +1,135 @@
+"""exceptions happen when something goes wrong and disrupts flow of the program like bad code
+Common exceptions:
+ImportError: an import fails;
+IndexError: a list is indexed with an out-of-range number;
+NameError: an unknown variable is used;
+SyntaxError: the code can't be parsed properly;
+TypeError: a function is called on a value of an inappropriate type;
+ValueError: a function is called on a value of the correct type, but with an inappropriate value."""
+"""try/except statements: the try block contians the "bad code" if the
+code generates an exception, the except block is run"""
+try:
+    num1 = 7
+    num2 = 0
+    print (num1 / num2)
+    print("Done calculation")
+except ZeroDivisionError:
+    print("An error occurred")
+    print("due to zero division")
+"""there can be multiple except blocks for different exceptions and multiple exception
+in one except block"""
+try:
+    variable = 10
+    print(variable + "hello")
+    print(variable / 2)
+except ZeroDivisionError:
+    print("Divided by zero")
+except (ValueError, TypeError):
+    print("Error occurred")
+"""an exception without no specifics will catch all errors. This can lead
+to hiding programming mistakes unknowingly"""
+try:
+    word = "spam"
+    print(word / 0)
+except:
+    print("An error occurred")
+#it's good for user input tho
+"""Use exception handling to take a number as input,
+call the withdraw() method with the input as its argument,
+and output "Please enter a number",
+in case the input is not a number."""
+def withdraw(amount):
+   print(str(amount) + " withdrawn!")
+
+#your code goes here
+
+try:
+   a=int(input())
+   withdraw(a)
+except:
+   print("Please enter a number")
+
+"""after try/except can be a 'finally' block that runs whether the code was bad or
+not"""
+try:
+    print("Hello")
+    print(1 / 0)
+except ZeroDivisionError:
+    print("Divided by zero")
+finally:
+    print("This code will run no matter what")
+#used with files
+"else can be used in try/except. only excutes if code is error-free"
+try:
+    print(1)
+except ZeroDivisionError:
+    print(2)
+else:
+    print(3)
+
+try:
+    print(1/0)
+except ZeroDivisionError:
+    print(4)
+else:
+    print(5)
+"""Your program needs to take the index of the item as input and output the item name.
+In case the index is not valid, you should output "Item not found".
+In case the index is valid and the item name is output successfully, you should output "Thanks for your order".
+
+Sample Input
+2
+
+Sample Output
+Cheeseburger
+Thanks for your order"""
+menu = ['Fries', 'Sandwich', 'Cheeseburger', 'Coffee', 'Soda']
+#your code goes here
+try:
+    a = int(input())
+    print(menu[a])
+    print("Thanks for your order")
+except:
+    print("Item not found")
+"""Make your own excpetions using "raise" """
+num = 102
+if num > 100:
+  #raise ValueError #specify the type of error
+  print("ok")
+"""Exceptions can be raised with arguments that give detail about them."""
+#name = "123"
+#raise NameError("Invalid name!")
+
+"""You are making a program to post tweets.
+Each tweet must not exceed 42 characters.
+Complete the program to raise an exception,
+in case the length of the tweet is more than 42 characters."""
+tweet = input()
+
+if len(tweet) <42:
+    print("Posted")
+else:
+    print("Error")
+
+"""You are making a registration form for a website.
+The form has a name field, which should be more than 3 characters long.
+Any name that has less than 4 characters is invalid.
+Complete the code to take the name as input, and raise an exception if the name is invalid, outputting "Invalid Name". Output "Account Created" if the name is valid.
+
+Sample Input
+abc
+
+Sample Output
+Invalid Name"""
+try:
+    name = input()
+    if len(name)<4:
+        raise NameError
+       
+except:
+    print("Invalid Name")
+
+else:
+    print("Account Created")
+
+
