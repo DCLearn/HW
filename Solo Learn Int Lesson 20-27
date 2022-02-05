@@ -1,0 +1,514 @@
+"""OOP tries to represent real-life objects in code
+Object Oriented Programmming (OOP) focuses on objects which are created using classes
+the class describes what the object will be but is separate from the object itself
+A class can be used several times
+use the keyword class and an indented block which contains class methods (methods are functions) to create a class"""
+"""class Cat:
+    def __init__(self, color, legs):
+        self.color=color
+        self.legs=legs
+
+felix=Cat("ginger",4)
+rover=Cat("dog-colored",4)
+stump=Cat("brown")"""
+
+"""This code defines a class, Cat, which has two attributes: color and legs
+then the class is used to create 3 separate objects of that class"""
+"""the __init__ method is the most important method in a class. It is called when 
+an instance(object of the class is created, using the class name as a function
+All methods must have "self" as the first parameter in their definition but it isn't explicitly passed.
+python passes/runs the self argument to the list automatically. Self refers to the the instance
+calling the method.
+Instances of a class have attributes(pieces of data associated with them)
+In "Cat" instance had attriubtes color and legs. These can be accessed by putting a dot and 
+the attribute name after an instance.
+in an __init___ method, self.attribute sets the initial value of an instance's attributes"""
+
+class Cat:
+    def __init__(self, color, legs):
+        self.color=color #technically, anyword can be used in place of self
+        self.legs=legs
+
+felix=Cat("ginger",4)
+print(felix.color)
+#The above  example the __init__ method takes two arguments and assigns them to
+#the object's attributes.
+#The __init__ method is called the class constructor, but is not actually a constructor, it i is an initializer
+"""Classes can have other methods definited to add functunionality to them
+All methods must start with self and include a dot
+Class attributes are shared by all instances of the class"""
+
+class Dog:
+    def __init__(self,name,color):
+        self.name=name
+        self.color=color
+
+    def bark(self):
+        print("Woof!")
+
+fido=Dog("Fido","brown")
+print(fido.name)
+fido.bark()
+
+"""You are making a video game! The given code declares a Player class, with its attributes and an intro() method.
+Complete the code to take the name and level from user input, create a Player object with the corresponding values and call the intro() method of that object.
+
+Sample Input
+Tony
+12
+
+Sample Output
+Tony (Level 12)"""
+class Player:
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
+
+    def intro(self):
+        print(self.name + " (Level " + self.level + ")")
+
+pone=Player(input(),input())
+pone.intro()
+"""inheritance shares functionality between classes
+imagine several classes, Cat, dog, rabbit, etc. They may differ in some ways, ex. 
+only dog has the method "bark" they are similar in other ways like having the attributes
+color and name.
+this similiarity can be harnessed by making them alll inherit from a superclass "Animal" which 
+contains shared functionality.
+"""
+class Animal:
+    def __init__(self,name,color):
+        self.name =name
+        self.color=color 
+        
+class Cat(Animal): #to inherit a class from another class, put the superclass name in parentheses after the class name
+    def purr(self):
+        print("Purr...")
+
+class Dog(Animal):
+    def bark(self):
+        print("Woof!")
+
+fido=Dog("Fido","brown")
+print(fido.color)
+fido.bark
+"""a class that inherits from abnother class is a subclass. The class hat is inherited from
+is called a superclass. if a class inherits from one with the same attributes or methods, it overrides them"""
+
+class Wolf:
+    def __init__(self,name,color):
+        self.name =name
+        self.color=color
+
+    def bark(self):
+        print("Grr...")
+
+class Dog(Wolf): #Dog is the subclass and Wolf is the superclass
+    def bark(self):
+        print("Woof!")
+husky=Dog("Max","grey")
+husky.bark
+"""the function super refers to the parent class. It is used to find the method
+with a certain name in an object's superclass"""
+class A:
+    def spam(self):
+        print(1)
+
+class B(A):
+    def spam(self):
+        print(2)
+        super().spam() #calls the spam method of the superclass
+
+B().spam()
+
+"""You are making a drawing application, which has a Shape base class.
+The given code defines a Rectangle class, creates a Rectangle object and calls its area() and perimeter() methods.
+
+Do the following to complete the program:
+1. Inherit the Rectangle class from Shape.
+2. Define the perimeter() method in the Rectangle class, printing the perimeter of the rectangle."""
+
+class Shape: 
+    def __init__(self, w, h):
+        self.width = w
+        self.height = h
+
+    def area(self):
+        print(self.width*self.height)
+
+class Rectangle(Shape):
+    def perimeter(self):
+        print(2*self.width+2*self.height)
+    #your code goes here
+    
+
+w = int(input("width"))
+h = int(input("height"))
+
+r = Rectangle(w, h)
+r.area()
+r.perimeter()
+
+"""Magic methods aka dunders are special methods with double underscores beginning and ending their names.
+__init__ is an example. They create functionality that can't be represented as a normal method.
+
+They can be used for operator overloading: defining operators for custm classes 
+so operators like * and + can be used on them. ex. __add__ for +"""
+
+class Vector2D:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other): #the __add__ method defines the custom behavior of the + operator
+        return Vector2D(self.x + other.x, self.y + other.y)
+        #it allows for the addition of two objects of the same class. 
+
+first = Vector2D(5, 7)
+second = Vector2D(3, 9)
+result = first + second
+print(result.x) #5+3 output 8
+print(result.y) #7+9 output 16
+"""More magic methods for common operators:
+__sub__ for -
+__mul__ for *
+__truediv__ for /
+__floordiv__ for //
+__mod__ for %
+__pow__ for **
+__and__ for &
+__xor__ for ^
+__or__ for |"""
+"""x+y can be x.___add__(y) but if x hasnt implemented __add__ and x/y are different types
+then y.__radd__(x) is called."""
+#in the example below, define the division operation for the class "Special String"
+class SpecialString:
+    def __init__(self,cont):
+        self.cont=cont
+    def __truediv__(self,other):
+        line= "="*len(other.cont)
+        return "\n".join([self.cont,line,other.cont])
+
+spam=SpecialString("spam")
+hello=SpecialString("Hello world!")
+print(spam/hello) #now the / symbol means something else
+#output: spam
+# ============
+#Hello world!
+"""Python also provides magic methods for comparisons.
+__lt__ for <
+__le__ for <=
+__eq__ for ==
+__ne__ for !=
+__gt__ for >
+__ge__ for >="""
+#if __ne__ is not implemented, it returns the opposite of __eq__
+class SpecialString:
+    def __init__(self,cont):
+        self.cont=cont
+    
+    def __gt__(self,other):
+        for i in range(len(other.cont)+1):
+            result = other.cont[:i]+ ">"+self.cont
+            result += ">" + other.cont[i:]
+            print(result)
+
+spam=SpecialString("spam")
+eggs=SpecialString("eggs")
+spam>eggs
+
+"""There are several magic methods for making classes act like containers.
+__len__ for len()
+__getitem__ for indexing
+__setitem__ for assigning to indexed values
+__delitem__ for deleting indexed values
+__iter__ for iteration over objects (e.g., in for loops)
+__contains__ for in
+
+__call__ for calling objects as functions
+__int__, __str__ for converting objects to built-in types.
+"""
+import random
+
+class VagueList:
+    def __init__(self, cont):
+        self.cont = cont
+
+    def __getitem__(self, index):
+        return self.cont[index + random.randint(-1, 1)] #outputs index of index input value plus a random integer between -1 and 1
+
+    def __len__(self):
+        return random.randint(0, len(self.cont)*2) #output a random integer between 0 and double the length of the input
+
+vague_list = VagueList(["A", "B", "C", "D", "E"])
+print(len(vague_list))
+print(len(vague_list))
+print(vague_list[2])
+print(vague_list[2])
+
+"""We are improving our drawing application.
+Our application needs to support adding and comparing two Shape objects.
+Add the corresponding methods to enable addition + and comparison using the greater than > operator for the Shape class.
+
+The addition should return a new object with the sum of the widths and heights of the operands, 
+while the comparison should return the result of comparing the areas of the objects."""
+class Shape: 
+    def __init__(self, w, h):
+        self.width = w
+        self.height = h
+
+    def area(self):
+        return self.width*self.height
+    def __mul__(self,other):
+    	return ((self.width+other.width)*(self.height+other.height))
+    def __ge__(self,other):
+        return self.area>other.area
+    
+    
+    
+
+w1 = int(input())
+h1 = int(input())
+w2 = int(input())
+h2 = int(input())
+
+s1 = Shape(w1, h1)
+s2 = Shape(w2, h2)
+result = s1 * s2
+
+print(result)
+print(s1.area() > s2.area())
+"""encapsulation: packaging related variables and functions into a single
+object.
+Data hiding: hiding a class' implemation details in order to present a  clean standard interface.
+In python, there are no ways of making a method or attribute strictly private.
+You can discourage people from accessing parts of a class by noting it as an implementation detail
+A private method in python is one external code is discouraged from using"""
+"""weakly private methods and attributes start with a single underscore, the underscore signals
+that they are private. But it doesnt prevent external code from accessing them"""
+class Queue:
+    def __init__(self, contents):
+        self._hiddenlist = list(contents)
+    
+    def push(self, value):
+        self._hiddenlist.insert(0, value) #adds value to the start of the list
+    
+    def pop(self): #pop remove and returns an item at the given index, if no index is given, it removes the last item in the list
+        return self._hiddenlist.pop(-1)
+    #removing the last item in the list
+    def __repr__(self): #repr is used for string representation here
+        return "Queue({})".format(self._hiddenlist)
+
+queue=Queue([1,2,3])
+print(queue)
+queue.push(0)
+print(queue)
+queue.pop()
+print(queue)
+print(queue._hiddenlist)
+
+"""Strongly private methods and attributes have a double underscore to start and their
+names are mangled and the cannot be accessed from outside the class. this prevents bugs in other subclasses
+with methods/attributes with the same names
+__privatemthod of class "Spam" can be accessed externally with _Spam__privatemethod"""
+class Spam:
+    __egg=7
+    def print_egg(self):
+        print(self.__egg)
+s=Spam()
+s.print_egg()
+print(s._Spam__egg)
+#print(s.__egg) this line will not print "Spam" has no attribute "__egg"
+"""We are working on a game. Our Player class has name and private _lives attributes.
+The hit() method should decrease the lives of the player by 1. In case the lives equal to 0, it should output "Game Over".
+Complete the hit() method to make the program work as expected."""
+
+class Player:
+    def __init__(self, name, lives):
+        self.name = name
+        self._lives = lives
+        
+    def hit(self):
+        self._lives -=1
+        if self._lives==0:
+            print("Game Over")
+
+
+p = Player("Cyberpunk77", 3)
+p.hit()
+p.hit()
+p.hit()
+"""class methodsare passed to the cls parameter method
+class methods are marked with a classmethod decorator"""
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate_area(self):
+        return self.width * self.height
+
+    @classmethod
+    def new_square(cls, side_length): #new_square is a class method and called on the class
+        return cls(side_length, side_length) #it returns a new object of the class cls
+
+square = Rectangle.new_square(5)
+print(square.calculate_area())
+#self and cls can be replaced with anything else but they are convention
+"""sStatitic methods are similiar to class methods but dont receive additional arguments
+they are the same as functions in a class
+they are marked with @staticmethod"""
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+
+    @staticmethod
+    def validate_topping(topping):
+        if topping == "pineapple":
+            raise ValueError("No pineapples!") 
+        else:
+            return True
+
+ingredients = ["cheese", "onions", "spam"]
+if all(Pizza.validate_topping(i) for i in ingredients):
+    pizza = Pizza(ingredients)
+#theres no output for this one but if it had "pineapple" in the ingredient list it would raise
+#a value error of "No pineapples!"
+"""
+The given code takes 2 numbers as input and calls the static area() method of the Shape class,
+to output the area of the shape, which is equal to the height multiplied by the width.
+To make the code work, you need to define the Shape class, 
+and the static area() method, which should return the multiplication of its two arguments.
+"""
+class Shape:
+    def __init__(self,width,height):
+        self.width = width
+        self.height = height
+
+    @staticmethod
+    def area(width,height):
+        return width*height
+
+
+w = int(input("w "))
+h = int(input("h "))
+
+print(Shape.area(w, h))
+"""properties customize access to instance attributes
+use @property above a method so only the method 
+is called if an instance attribute has the same name
+@property is used to make an attribute read-only"""
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+
+    @property
+    def pineapple_allowed(self):
+        return False
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
+#pizza.pineapple_allowed = True this line generates an Attribute error, cant set attribute
+"""setter/getter functions can set Properties as well
+setter function sets the property value.
+getter gets the value
+use a decorator with the property name, a dot and the setter/getter keyword"""
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+        self._pineapple_allowed = False
+
+    @property
+    def pineapple_allowed(self):
+        return self._pineapple_allowed
+
+    @pineapple_allowed.setter
+    def pineapple_allowed(self, value):
+        if value:
+            password = input("Enter the password: ")
+            if password == "Sw0rdf1sh!":
+                self._pineapple_allowed = value
+            else:
+                raise ValueError("Alert! Intruder!")
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = True
+print(pizza.pineapple_allowed)
+#this requires a password. If the correct password is entered, the output is true
+#the incorrect pw outputs a value error
+"""We are improving our game and need to add an isAlive property, which returns True if the lives count is greater than 0.
+Complete the code by adding the isAlive property."""
+class Player:
+    def __init__(self, name, lives):
+        self.name = name
+        self._lives = lives
+
+    def hit(self):
+        self._lives -= 1
+    
+    #your code goes here
+    @property
+    def isAlive(self):
+        if self._lives> 0:
+            return True
+    
+
+p = Player("Cyberpunk77", int(input()))
+i = 1
+while True:
+    p.hit()
+    print("Hit # " + str(i))
+    i += 1
+    if not p.isAlive:
+        print("Game Over")
+        break
+"""Inherit the Alien and Monster classes from the Enemy class.
+2. Complete the while loop that continuously takes the weapon of choice from user input and call the corresponding object's hit() method.
+
+Sample Input
+laser
+laser
+gun
+exit
+
+Sample Output
+Alien has 4 lives
+Alien has 3 lives
+Monster has 2 lives"""
+
+class Enemy:
+  name = ""
+  lives = 0
+  def __init__(self, name, lives):
+    self.name = name
+    self.lives = lives
+
+  def hit(self):
+    self.lives -= 1
+    if self.lives <= 0:
+       print(self.name + ' killed')
+    else:
+        print(self.name + ' has '+ str(self.lives) + ' lives')
+
+class Monster(Enemy):
+  def __init__(self):
+    super().__init__('Monster', 3)
+
+class Alien(Enemy):
+  def __init__(self):
+    super().__init__('Alien', 5)
+
+
+m = Monster()
+a = Alien()
+
+while True:
+    x = input()
+    if x == 'exit':
+        break
+    elif x == 'gun':
+      m.hit()
+    elif x == 'laser':
+      a.hit()
+    
