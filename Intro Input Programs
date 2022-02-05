@@ -260,4 +260,466 @@ if len(a)>=7 and d>=2 and e>=2:
     print("Strong")
 else:
     print("Weak")
+  """
+Complete the porgram to take the country name as input and output its corresponding
+economic freedom rank. if the provided country name is not present in the data, output "Not found"
+"""
+data={
+    'Singapore':1,
+    'Ireland':6,
+    'United Kingdom':7,
+    'Germany':27,
+    'Armenia':34,
+    'United States': 17,
+    'Canada':9,
+    'Italy':74
+    }
 
+a=input("Insert country name")
+"""if a in data:
+    print(data[a])
+else:
+    print("Not Found")"""
+if a in data:
+    print(data.get(a))
+else:
+    print(data.get(12345,"Not found"))
+"""Contacts are stored in a tuple. String as input and output the age of the contact
+Input: John
+output: John is 31"""
+contacts=[
+    ('James',42),
+    ('Amy',24),
+    ('John',31),
+    ('Amanda',63),
+    ('Bob',18)
+]
+#print((contacts[0])[0])
+a=input("Insert contact name")
+s=-1
+for i in contacts:
+    s+=1
+    if a==((contacts[s])[0]):
+        b=((contacts[s])[0])
+        c=((contacts[s])[1])
+        print(b + " is " + str(c))
+        break
+    elif s==4 and a !=((contacts[s])[0]):
+        print("Not found")
+"""Make a function called calc() that will take the side length of a square 
+as its argument and return the periment and area, using a tuple
+Input: 3
+Output Perimeter: 12 Area: 9"""
+def calc(x):
+    return (4*x, x**2)
+side=int(input("length of square side"))
+p,a=calc(side)
+print("Perimeter: "+ str(p))
+print("Area: "+str(a))
+"""GIven a  word as input, output a list containing only the letters
+of the word that arent vowels a,e,i,u,o
+Input: Awesome
+Output: ['w','s','m']"""
+a=input("Write a word ")
+vowels=("a","e","i","o","u","A","E","I","O","U")
+no_vowels= [i for i in a if i not in vowels]
+print(no_vowels)
+"""Given a string, output how many times each letter apears in the string
+store the data in a dictionary where the letters are the keys and the counts are th evalues
+input: hello
+output: {'h':1,'e':1,'l':2,'o':1}"""
+a=input()
+dic={
+
+}
+for i in a:
+    b=0
+    b+= a.count(i)
+    c=str(i)
+    dic.update({c:b})
+    continue
+
+print(dic)
+"""Given a lst of salaries, take the bonus as input and increase all the
+salaries by that amount"""
+salaries=[2000,1800,3100,4400,1500]
+bonus=int(input("bonus"))
+salaries=list(map(lambda x:x+bonus,salaries))
+print(salaries)
+"""A list that represents the ages of animals. Take a nuber as input nad output
+how many of the animals are older than the given number"""
+ages=[3,1,9,0.4,7,12,2,1.7,5.7,42,6.7,14.5,21]
+q=float(input("Age"))
+dog=len(list(filter(lambda x:x>q, ages)))
+print(dog)
+"""Create  a generator function theat will take two numbers as arguments and output the prime numbers in the range"""
+# If given number is greater than 1
+num=int(input("small number "))
+numtwo=int(input("larger number "))
+def primeis(x):
+    if x > 1:
+    # Iterate from 2 to n / 2
+            for i in range(2, int(x/2)+1):
+  
+        # If num is divisible by any number between
+        # 2 and n / 2, it is not prime
+                if (x % i) == 0:
+                    return False
+            else:
+                return True
+    else:
+            return False
+
+
+def prime_nums(x,y): #generate a list of prime number
+    for i in range(x,y): #for numbers in range x to y
+        if primeis(i) == True: #if the number is prime
+            yield i
+
+print(list(prime_nums(num,numtwo)))
+"""add a decorator for an invoicing system to print the invoice in the 
+required format
+
+Input 42
+output
+***
+INVOICE #42
+***
+END OF PAGE"""
+def decorat(func):
+    def aster(arg): #the (arg) is important here
+        print("***") #wrap prints a string
+        func(arg) #the (arg) is important here
+        print("***") 
+        print("END OF PAGE")
+    return aster 
+@decorat
+def invoice(x): 
+    print("INVOICE #"+x)
+
+a=input("Invoice number ")
+invoice(a)
+"""fix the following code by adding a base case for recursion 
+then take a number from input() to output the result"""
+def convert(num):
+    if num == 1:
+        return 1
+    else:
+        return(num%2+10*convert(num//2))
+
+print(convert(int(input("insert an integer "))))
+"""Given a string as input, use recursion to output each letter of the string 
+reverse order on a new line
+Input HELLO
+Output
+O
+L
+L
+E
+H"""
+def reverse(text):
+    n = len(text)
+    if n:
+        print(text[-1])
+    if 1 < n:
+        reverse(text[:-1])
+
+reverse('PYTHON')
+"""You are making a video game! The given code declares a Player class, with its attributes and an intro() method.
+Complete the code to take the name and level from user input, create a Player object with the corresponding values and call the intro() method of that object.
+
+Sample Input
+Tony
+12
+
+Sample Output
+Tony (Level 12)"""
+class Player:
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
+
+    def intro(self):
+        print(self.name + " (Level " + self.level + ")")
+
+pone=Player(input(),input())
+pone.intro()
+"""You are making a drawing application, which has a Shape base class.
+The given code defines a Rectangle class, creates a Rectangle object and calls its area() and perimeter() methods.
+
+Do the following to complete the program:
+1. Inherit the Rectangle class from Shape.
+2. Define the perimeter() method in the Rectangle class, printing the perimeter of the rectangle."""
+
+class Shape: 
+    def __init__(self, w, h):
+        self.width = w
+        self.height = h
+
+    def area(self):
+        print(self.width*self.height)
+
+class Rectangle(Shape):
+    def perimeter(self):
+        print(2*self.width+2*self.height)
+    #your code goes here
+    
+
+w = int(input("width"))
+h = int(input("height"))
+
+r = Rectangle(w, h)
+r.area()
+r.perimeter()
+"""We are improving our drawing application.
+Our application needs to support adding and comparing two Shape objects.
+Add the corresponding methods to enable addition + and comparison using the greater than > operator for the Shape class.
+
+The addition should return a new object with the sum of the widths and heights of the operands, 
+while the comparison should return the result of comparing the areas of the objects."""
+class Shape: 
+    def __init__(self, w, h):
+        self.width = w
+        self.height = h
+
+    def area(self):
+        return self.width*self.height
+    def __mul__(self,other):
+    	return ((self.width+other.width)*(self.height+other.height))
+    def __ge__(self,other):
+        return self.area>other.area
+    
+    
+    
+
+w1 = int(input())
+h1 = int(input())
+w2 = int(input())
+h2 = int(input())
+
+s1 = Shape(w1, h1)
+s2 = Shape(w2, h2)
+result = s1 * s2
+
+print(result)
+print(s1.area() > s2.area())
+The given code takes 2 numbers as input and calls the static area() method of the Shape class,
+to output the area of the shape, which is equal to the height multiplied by the width.
+To make the code work, you need to define the Shape class, 
+and the static area() method, which should return the multiplication of its two arguments.
+"""
+class Shape:
+    def __init__(self,width,height):
+        self.width = width
+        self.height = height
+
+    @staticmethod
+    def area(width,height):
+        return width*height
+
+
+w = int(input("w "))
+h = int(input("h "))
+
+print(Shape.area(w, h))
+"""We are improving our game and need to add an isAlive property, which returns True if the lives count is greater than 0.
+Complete the code by adding the isAlive property."""
+class Player:
+    def __init__(self, name, lives):
+        self.name = name
+        self._lives = lives
+
+    def hit(self):
+        self._lives -= 1
+    
+    #your code goes here
+    @property
+    def isAlive(self):
+        if self._lives> 0:
+            return True
+    
+
+p = Player("Cyberpunk77", int(input()))
+i = 1
+while True:
+    p.hit()
+    print("Hit # " + str(i))
+    i += 1
+    if not p.isAlive:
+        print("Game Over")
+        break
+  """Inherit the Alien and Monster classes from the Enemy class.
+2. Complete the while loop that continuously takes the weapon of choice from user input and call the corresponding object's hit() method.
+
+Sample Input
+laser
+laser
+gun
+exit
+
+Sample Output
+Alien has 4 lives
+Alien has 3 lives
+Monster has 2 lives"""
+
+class Enemy:
+  name = ""
+  lives = 0
+  def __init__(self, name, lives):
+    self.name = name
+    self.lives = lives
+
+  def hit(self):
+    self.lives -= 1
+    if self.lives <= 0:
+       print(self.name + ' killed')
+    else:
+        print(self.name + ' has '+ str(self.lives) + ' lives')
+
+class Monster(Enemy):
+  def __init__(self):
+    super().__init__('Monster', 3)
+
+class Alien(Enemy):
+  def __init__(self):
+    super().__init__('Alien', 5)
+
+
+m = Monster()
+a = Alien()
+
+while True:
+    x = input()
+    if x == 'exit':
+        break
+    elif x == 'gun':
+      m.hit()
+    elif x == 'laser':
+      a.hit()
+    """Use exception handling to take a number as input,
+call the withdraw() method with the input as its argument,
+and output "Please enter a number",
+in case the input is not a number."""
+def withdraw(amount):
+   print(str(amount) + " withdrawn!")
+
+#your code goes here
+
+try:
+   a=int(input())
+   withdraw(a)
+except:
+   print("Please enter a number")
+"""Your program needs to take the index of the item as input and output the item name.
+In case the index is not valid, you should output "Item not found".
+In case the index is valid and the item name is output successfully, you should output "Thanks for your order".
+
+Sample Input
+2
+
+Sample Output
+Cheeseburger
+Thanks for your order"""
+menu = ['Fries', 'Sandwich', 'Cheeseburger', 'Coffee', 'Soda']
+#your code goes here
+try:
+    a = int(input())
+    print(menu[a])
+    print("Thanks for your order")
+except:
+    print("Item not found")
+    """You are making a registration form for a website.
+The form has a name field, which should be more than 3 characters long.
+Any name that has less than 4 characters is invalid.
+Complete the code to take the name as input, and raise an exception if the name is invalid, outputting "Invalid Name". Output "Account Created" if the name is valid.
+
+Sample Input
+abc
+
+Sample Output
+Invalid Name"""
+try:
+    name = input()
+    if len(name)<4:
+        raise NameError
+       
+except:
+    print("Invalid Name")
+
+else:
+    print("Account Created")
+"""You need to make a program to read the given number of characters of a file.
+Take a number N as input and output the first N characters of the books.txt file."""
+N=int(input())
+file = open("/usercode/files/books.txt")
+#your code goes here
+print(file.read(N))
+file.close()
+"""
+Take a number N as input and write the numbers 1 to N to the file "numbers.txt", each number on a separate line.
+
+Sample Input
+4
+
+Sample Output
+1
+2
+3
+4
+
+The given code reads the content of the file and outputs it.
+"""
+a = int(input())
+
+file = open("numbers.txt", "w+")
+#your code goes here
+for i in range(1,a+1):
+    
+    file.write("\n" + str(i))
+file.close()
+
+f = open("numbers.txt", "r")
+print(f.read())
+f.close()
+#make sure files are closed using try and finally
+try:
+  f = open("/usercode/files/books.txt")
+  cont = f.read()
+  print(cont)
+finally:
+ f.close() #file is always closed, even if there is an error
+"""
+You are given a books.txt file, which includes book titles, each on a separate line.
+Create a program to output how many words each title contains, in the following format:
+Line 1: 3 words
+Line 2: 5 words
+...
+
+Make sure to match the above mentioned format in the output."""
+with open("/usercode/files/books.txt") as f:
+   #your code goes here
+   s=0
+   for line in f.readlines():
+      s +=1
+      a=1
+      for i in line:
+         if i == " ":
+            a+=1
+
+      print("Line " + str(s)+ ": "+str(a)+" words")
+
+"""You are given a file named "books.txt" with book titles, each on a separate line.
+To encode the book titles you need to take the first letters of each word in the title and combine them.
+For example, for the book title "Game of Thrones" the encoded version should be "GoT".
+
+Complete the program to read the book title from the file and output the encoded versions, each on a new line."""
+file = open("/usercode/files/books.txt", "r")
+for i in file.readlines():
+    x=i.split(" ")
+    finale = ""
+    for j in x:
+        c=str(j)
+        finale+=c[0]
+    print(finale)
+
+file.close()
