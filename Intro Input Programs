@@ -723,3 +723,43 @@ for i in file.readlines():
     print(finale)
 
 file.close()
+#Reverse message
+
+thisdict = {
+    " ": " ",
+    "a": "z",
+    "b": "x",
+    "c": "y",
+    "d":"w",
+    "e":"v",
+    "f":"u",
+    "g":"t",
+    "h":"s",
+    "i":"r",
+    "j":"q",
+    "k":"p",
+    "l":"o",
+    "m":"n",
+    "n":"m",
+    "o":"l",
+    "p":"k",
+    "q":"j",
+    "r":"i",
+    "s":"h",
+    "t":"g",
+    "u":"f",
+    "v":"e",
+    "w":"d",
+    "x":"c",
+    "y":"b",
+    "z":"a"
+
+
+}
+
+test= input ("Type in a phrase: ")
+better=test.casefold()
+u=""
+for i in better:
+    u += thisdict[i]
+print(u)
